@@ -1,0 +1,42 @@
+{
+    "app": {
+        "port": "3000",
+        "url": "http://localhost:3000",
+        "dir": "$APP_DIR",
+        "dirs": {
+            "data": "$APP_DIR/data",
+            "src": "$APP_DIR/src",
+            "log": "$APP_DIR/data/log",
+            "public": "$APP_DIR/data/public",
+            "upload": "$APP_DIR/data/upload",
+            "view": "$APP_DIR/data/view"
+        }
+    },
+    "express": {
+        "trustProxy": false
+    },
+    "nunjucks": {
+        "loader": {
+            "watch": true,
+            "noCache": true
+        },
+        "environment": {
+            "autoescape": true,
+            "throwOnUndefined": false,
+            "trimBlocks": false,
+            "lstripBlocks": false
+        }
+    },
+    "session": {
+        "name": "connect.ec.sid",
+        "store": {
+            "db": "sessions.db",
+            "dir": "$APP_DIR/data"
+        },
+        "cookie": {
+            "httpOnly": false,
+            "maxAge": 43200000,
+            "secure": false
+        }
+    }
+}

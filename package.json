@@ -1,0 +1,38 @@
+{
+  "name": "twofa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kosinix/twoFA.git"
+  },
+  "author": "Nico Amarilla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kosinix/twoFA/issues"
+  },
+  "homepage": "https://github.com/kosinix/twoFA#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-sqlite3": "^0.9.11",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.1-alpha.3",
+    "express-session": "^1.15.6",
+    "guess-file-type": "^0.6.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.16",
+    "nunjucks": "^3.1.7",
+    "qrcode": "^1.3.3",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
