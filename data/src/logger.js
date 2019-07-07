@@ -4,15 +4,15 @@ const util = require('util');
 
 //// External modules
 const moment = require('moment');
+const troso = require('troso');
 
 //// Modules
-const weaverLogger = include('src/weaverLogger');
 
 
-let loggerError = new weaverLogger.Logger({
+let loggerError = new troso.Logger({
     transports: [
-        new weaverLogger.transports.Console(),
-        new weaverLogger.transports.DailyFile({
+        new troso.transports.Console(),
+        new troso.transports.DailyFile({
             directory: path.join(CONFIG.app.dirs.data, 'log'),
             formatter: (message) => {
                 let today = moment();//new Date();
@@ -22,9 +22,9 @@ let loggerError = new weaverLogger.Logger({
     ],
 });
 
-let loggerOk = new weaverLogger.Logger({
+let loggerOk = new troso.Logger({
     transports: [
-        new weaverLogger.transports.Console()
+        new troso.transports.Console()
     ]
 });
 

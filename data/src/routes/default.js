@@ -12,7 +12,6 @@ let router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try {
-
         let secret = speakeasy.generateSecret({length: 20});
         req.session.secretBase32 = secret.base32
         let url = speakeasy.otpauthURL({ secret: secret.ascii, label:'juan@example.com', issuer: 'EasycashDash' })

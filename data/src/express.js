@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const lodash = require('lodash');
 
 //// Modules
-const session = include('src/session');
+const session = include('data/src/session');
 const errors = include('src/errors');
 
 const logger = include('data/src/logger');
