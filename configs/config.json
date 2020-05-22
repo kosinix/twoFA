@@ -1,0 +1,54 @@
+{
+  "app": {
+    "port": "3000",
+    "url": "http://localhost:3000",
+    "dir": "${APP_DIR}",
+    "dirs": {
+      "data": "${APP_DIR}/data",
+      "src": "${APP_DIR}/src",
+      "public": "${APP_DIR}/data/public",
+      "view": "${APP_DIR}/data/view",
+      "upload": "${APP_DIR}/data/upload"
+    }
+  },
+  "express": {
+    "trustProxy": false
+  },
+  "nunjucks": {
+    "loader": {
+      "watch": true,
+      "noCache": true
+    },
+    "environment": {
+      "autoescape": true,
+      "throwOnUndefined": false,
+      "trimBlocks": false,
+      "lstripBlocks": false
+    }
+  },
+  "session": {
+    "name": "connect.twofa.sid",
+    "store": {
+      "db": "sessions.db",
+      "dir": "${APP_DIR}/data"
+    },
+    "cookie": {
+      "httpOnly": false,
+      "maxAge": 31536000000,
+      "secure": false
+    }
+  },
+  "sequelize": {
+    "connections": {
+      "default": {
+        "host": "127.0.0.1:27017",
+        "db": "${APP_DIR}/data/database.db"
+      }
+    }
+  },
+  "twoFA": {
+    "secretLength": 20,
+    "label": "kosinix@email.com",
+    "issuer": "ExampleCorp"
+  }
+}

@@ -7,7 +7,8 @@ const express = require('express');
 
 // Routes
 let router = express.Router();
-router.use(include('data/src/routes/default'));
+router.use(require('./routes/public'));
+router.use(require('./routes/two-fa'));
 
 // 404 Page
 router.use((req, res) => {

@@ -1,0 +1,26 @@
+{% extends "document.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 ml-auto mr-auto mb-5">
+            {% include 'parts/flash.html' %}
+            <h1>2. Scan this code with your app.</h1>
+            {# <p>Scan the image above with the two-factor authentication app on your phone. If you can’t use a barcode, enter this code instead. </p> #}
+
+            <div class="text-center pt-5 pb-5">
+                <img src="{{qrCode}}" alt="{{url}}" title="{{url}}">
+            </div>
+            <h5>Enter the six-digit code from the application</h5>
+            <p>After scanning the barcode image, the app will display a six-digit code that you can enter below. </p>
+            <form action="/save-code" method="post">
+                <div class="form-group">
+                    <label for="otp">Code</label>
+                    <input type="text" name="otp" class="form-control" id="otp" value="" autocomplete="off">
+                </div>
+                <button class="btn btn-success">Enable</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

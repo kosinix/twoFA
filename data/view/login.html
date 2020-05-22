@@ -1,0 +1,25 @@
+{% extends "document.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 ml-auto mr-auto">
+            <h1>Login</h1>
+            {% include 'parts/flash.html' %}
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" value="kosinix">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" value="kosinix">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -7,12 +7,14 @@ const cookieParser = require('cookie-parser');
 const lodash = require('lodash');
 
 //// Modules
-const session = include('data/src/session');
-const errors = include('src/errors');
+const db = require('./db');
+const errors = require('../../src/errors');
+const logger = require('./logger');
+const middlewares = require('./middlewares');
+const nunjucksEnv = require('./nunjucks-env');
+const routes = require('./routes');
+const session = require('./session');
 
-const logger = include('data/src/logger');
-const routes = include('data/src/routes');
-const nunjucksEnv = include('data/src/nunjucksEnv');
 
 //// Create app
 const app = express();
@@ -21,6 +23,8 @@ const app = express();
 nunjucksEnv.express(app);
 
 //// Global variables
+// Assign once on node run
+app.locals = CONFIG
 
 // Remove express
 app.set('x-powered-by', false);
@@ -35,17 +39,6 @@ let setHeaders = (res, path, stat) => {
 }
 app.use(express.static(CONFIG.app.dirs.public, { setHeaders: setHeaders }));
 
-// Body class
-app.use((req, res, next) => {
-    // CONFIG.app.url = 'http://'+req.get('host') // TODO: remove for mobile tether testing
-    // If path "/about-us" becomes "page-about-us"
-    let bodyClass = 'page' + (req.baseUrl + req.path).replace(/\//g, '-');
-    bodyClass = lodash.trim(bodyClass, '-');
-    bodyClass = lodash.trimEnd(bodyClass, '.html');
-    req.app.locals.bodyClass = bodyClass; // global body class css
-    next();
-});
-
 // Parse http body
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -59,6 +52,18 @@ app.use(cookieParser());
 //// Set express vars
 // Indicates the app is behind a front-facing proxy, and to use the X-Forwarded-* headers to determine the connection and the IP address of the client.
 app.set('trust proxy', CONFIG.express.trustProxy);
+
+// Assign per request
+app.use((req, res, next)=>{
+    try {
+        res.locals.user = lodash.get(req, 'session.user')
+        next()
+    } catch (err) {
+        next(err)
+    }
+});
+
+app.use(middlewares.addRouteId);
 
 
 //// Routes

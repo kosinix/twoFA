@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install": "node install.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,13 +26,16 @@
     "express-fileupload": "^1.1.1-alpha.3",
     "express-session": "^1.15.6",
     "guess-file-type": "^0.6.0",
-    "kisapmata": "github:kosinix/kisapmata#1.0.0",
+    "kisapmata": "^1.1.3",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "mongoose": "^5.4.16",
     "nunjucks": "^3.1.7",
+    "pigura": "^1.0.1",
     "qrcode": "^1.3.3",
+    "sequelize": "^5.21.10",
     "speakeasy": "^2.0.0",
+    "sqlite3": "^4.2.0",
     "troso": "github:kosinix/troso#1.0.0"
   },
   "devDependencies": {
